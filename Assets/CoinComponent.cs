@@ -1,9 +1,9 @@
 using UnityEngine;
-
+ 
 public class CoinComponent : MonoBehaviour
 {
     private int points;
-
+ 
     public delegate void OnCoinChangedHandler(int amount, int changedAmount);
     public event OnCoinChangedHandler OnCoinChanged;
     public event OnCoinChangedHandler OnCoinInit;
@@ -12,17 +12,16 @@ public class CoinComponent : MonoBehaviour
     {
         OnCoinInit?.Invoke(0, 0);
     }
-
+ 
     // Update is called once per frame
     void Update()
     {
-
     }
-
-    public void AddPoints(int amount)
+ 
+    public void AddPoints(int amomunt)
     {
-        points += amount;
-        OnCoinChanged?.Invoke(points, amount);
+        points += amomunt;
+        OnCoinChanged?.Invoke(points, amomunt);
         //Debug.Log(points);   
     }
 }

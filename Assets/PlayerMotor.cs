@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-
+ 
 public class PlayerMotor : MonoBehaviour
 {
     Vector2 direction;
@@ -20,30 +20,30 @@ public class PlayerMotor : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody2D.AddForce(new Vector2(direction.x * speed, 0));
-
+ 
         if (rigidbody2D.linearVelocityX >= maxSpeed)
         {
             rigidbody2D.linearVelocityX = maxSpeed;
         }
-
+ 
         else if (rigidbody2D.linearVelocityX <= -maxSpeed)
         {
             rigidbody2D.linearVelocityX = -maxSpeed;
         }
-
+ 
         if (direction.x == 0 && rigidbody2D.linearVelocityX != 0)
         {
             rigidbody2D.AddForce(new Vector2(-rigidbody2D.linearVelocityX * stoppingForce, 0));
         }
-
-
+ 
+ 
     }
-
+ 
     private void OnMove(InputValue value)
     {
         direction = value.Get<Vector2>();
     }
-
+ 
     private void OnJump()
     {
         if (canJump)
@@ -51,9 +51,9 @@ public class PlayerMotor : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
         }
-
+ 
     }
-
+ 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         canJump = true;
