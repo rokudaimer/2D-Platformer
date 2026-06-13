@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using Unity.Jobs;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -25,25 +22,15 @@ public class PlayerHealth : MonoBehaviour
         OnHealthInitialised?.Invoke(health);
     }
 
-    //public void ReceiveDamage(float amount)
-   // {
-    //    if(!invincibility)
-    //    {
-    //        health -= amount;
-    //        OnHealthChanged?.Invoke(health, amount);
-   //         invincibility = true;
-    //        StartCoroutine(ResetInvincibility(3));
-    //    }
-    //    if (health <= 0)
-    //    {
-    //        SceneManager.LoadScene("deathscreen");
-//
-    //    }
-   // }
+    public void ReceiveDamage(int amount, Vector3 origin)
+    {
+    }
 
     // Update is called once per frame
-    //void Update()
-    //{
+    void Update()
+    {
+
+    }
     public void AddDamage(float damage)
     {
         if (canReceiveDamage)
