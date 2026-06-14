@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public float maxhealth = 100;
+    public float maxhealth = 10;
     private float health;
     private bool canReceiveDamage = true;
     public float invincibilitytimer = 2;
@@ -23,6 +23,12 @@ public class PlayerHealth : MonoBehaviour
     {
         health = maxhealth;
         OnHealthInitialised?.Invoke(health);
+
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("deathscreen");
+            //
+        }
     }
 
     //public void ReceiveDamage(float amount)
@@ -34,11 +40,7 @@ public class PlayerHealth : MonoBehaviour
    //         invincibility = true;
     //        StartCoroutine(ResetInvincibility(3));
     //    }
-    //    if (health <= 0)
-    //    {
-    //        SceneManager.LoadScene("deathscreen");
-//
-    //    }
+        
    // }
 
     // Update is called once per frame
